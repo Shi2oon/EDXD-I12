@@ -34,7 +34,7 @@ eval(sprintf('errorbar(1:fk,aa.a%d.Dmean(count,:),aa.a%d.err(count,:),"k--o","Ma
             num2str(aa.Qposition(peak)) ' Mean Intensity.fig']);
         saveas(gcf,dir.path);
         
-    eval(sprintf('plot(1:fk,aa.a%d.DmeanRaw(count,:),"b-->",,"MarkerEdgeColor","b","MarkerFaceColor","b");',peak)); hold off;
+    eval(sprintf('plot(1:fk,aa.a%d.DmeanRaw(count,:),"b-->","MarkerEdgeColor","b","MarkerFaceColor","b");',peak)); hold off;
     legend ('Normalised','Raw');
     dir.path = fullfile(dir.specific{count},[num2str(doc1) ' ' ...
         num2str(aa.Qposition(peak)) ' Raw + calib Intensity.fig']); 

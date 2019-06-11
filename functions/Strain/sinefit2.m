@@ -19,12 +19,11 @@ function [f] = sinefit2(x, y,TH)
 %                    c
 
 f1=fit(x,y,'fourier1','Exclude',abs(y)>trimmean(abs(y),50)*TH); 
-f.exx=f1.a0+f1.a1;
-f.eyy=f1.a0-f1.a1;
-f.exy=2*f1.b1;
+f.exx = f1.a0+f1.a1;
+f.eyy = f1.a0-f1.a1;
+f.exy = 2*f1.b1;
 
+% f.a0  = f1.a0; 
+% f.a1  = f1.a1;
+% f.b1 = f1.b1;
 end
-% if toggleplot
-%     plot(f1,x,y)
-%     figure; polar(x,y+0.005); hold on; polar(x,ones(23,1)*0.005); hold off
-% end

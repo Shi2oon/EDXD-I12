@@ -1,6 +1,6 @@
 function [Points]=SecondPassRef(RefScan,Ref_dir,doc2)
 % 1st pass therotical
-Eva         =   RefScan.Strain.eyy;   % absloute strains   
+Eva         =   RefScan.Strain.e;   % absloute strains   
 Eyy         =   abs(Eva - (min(Eva)+max(Eva))/2);
 X           =   RefScan.Strain.X(1,:);
 Y           =   RefScan.Strain.Y(:,1);

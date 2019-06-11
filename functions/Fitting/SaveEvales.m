@@ -15,10 +15,11 @@ for peak=1:Q.NumberOfPeaks
         if peak==Q.NumberOfPeaks
 %% straind calculation
         [A.Strain] = StrainTensors2(A.Q, scan.TH); %caclulate strain
+        A.Strain.e = squeeze(trimmean(A.Q,50));
 % dir.path = fullfile(dir.specific{count},[num2str(doc1) ...
 %  '  Mohrs Circle (Random point).png']); saveas(gcf,dir.path);   close all
-        A.Strain.Y=dir.y;           A.Strain.X=dir.x;
-        alldata=[A.Strain.X(:) A.Strain.Y(:) A.Strain.exx(:)...
+        A.Strain.Y = dir.y;           A.Strain.X = dir.x;
+        alldata    = [A.Strain.X(:) A.Strain.Y(:) A.Strain.exx(:)...
                     A.Strain.eyy(:) A.Strain.exy(:)];
                 
         plot_strains(A.Strain,doc1,dir.specific{count})

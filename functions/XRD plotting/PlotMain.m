@@ -2,7 +2,7 @@ function PlotMain(Q,fk,dir,doc1,count,aa)
  
 for peak=1:Q.NumberOfPeaks
 subplot(Q.NumberOfPeaks,1,peak)  
-eval(sprintf('errorbar(1:fk,aa.a%d.Dmean(count,:),aa.a%d.err(count,:),"k--o",,"MarkerEdgeColor","k","MarkerFaceColor","k");'...
+eval(sprintf('errorbar(1:fk,aa.a%d.Dmean(count,:),aa.a%d.err(count,:),"k--o","MarkerEdgeColor","k","MarkerFaceColor","k");'...
         ,peak,peak));
     title(['Peak \{' num2str(aa.Qposition(Q.NumberOfPeaks-peak+1)) '\} ']);
     ylabel('Intensity'); xlim([1 fk])

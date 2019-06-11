@@ -10,10 +10,10 @@
 % the Univeristy of Oxford, Dept. of Materials 
 
 %% Directors
-close all; clear;clc; warning('off');   
+% close all; clear;clc; warning('off');   
 addpath([pwd '\functions']);        credits
 dir.scan   = 'X:\EE 13579 Diamond Light Source\EDXD\1. EDXD rawdata'; %raw data directory
-dir.result = 'X:\EE 13579 Diamond Light Source\Diamond EE 13579\Strain Analysis 6'; %result directory
+dir.result = 'X:\EE 13579 Diamond Light Source\Diamond EE 13579\Strain Analysis 7'; %result directory
 mkdir(dir.result);
 
 %% Peak fitting parameters
@@ -25,8 +25,8 @@ Q.latticePar    = 2.866;             %lattice parameter, for Fe=2.856;
 %% files to process
 % scan.scan    = [66842,66844,66845,66846,66850,66852,66853,66854,66855,66856,66857];  
 % scan.doc2    = 66842; 
-scan.scan    = [66881,66882,66883,66884,66885,66886,66887];                           
-scan.doc2    = 66887; 
+% scan.scan    = [66881,66882,66883,66884,66885,66886,66887];                           
+% scan.doc2    = 66887; 
 % scan.scan    = [66826,66827,66828,66829,66830,66831,66833,66834,66838,66839,66840];   
 % scan.doc2    = 66826; 
 scan.Calib   = 66892;  % calibration/normalisation ciera scan, if not available then 'NO'

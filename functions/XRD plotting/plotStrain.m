@@ -7,7 +7,7 @@ if doc1~=scan.ref
    for peak=1:Q.NumberOfPeaks
        eval(sprintf('vo = trimmean(trimmean(A.Q%d,50,3),50,2);',peak));
        scatter(degressD,vo,shApes{peak},'filled','DisplayName',...
-                ['\{' num2str(aa.Qposition(NumberOfPeaks-peak+1)) '\}']);
+                ['\{' num2str(aa.Qposition(Q.NumberOfPeaks-peak+1)) '\}']);
        hold on; set(gcf,'position',[500,100,950,800])
    end
        legend('location','northwest');  
