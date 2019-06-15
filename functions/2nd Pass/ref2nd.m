@@ -2,10 +2,10 @@ function [Ref,Table] = ref2nd(dir,Points,Q,Factor,scan)
     fprintf('2nd Reference scan is being created ...\n ');
     dir.file = fullfile(dir.scan,[num2str(scan.doc2) '.nxs']);
     
-    dir.Dataset = '/entry1/EDXD_elements/data';
-    Data = h5read(dir.file,dir.Dataset);
+    dir.Dataset  = '/entry1/EDXD_elements/data';
+    Data         = h5read(dir.file,dir.Dataset);
     dir.qDataset = '/entry1/EDXD_elements/edxd_q';
-    qData = h5read(dir.file,dir.qDataset);
+    qData        = h5read(dir.file,dir.qDataset);
 
 [~,fk,~,~]=size(Data);    fk=fk-1;       AA.A0.A0=0; A.a0.a0=0;
 

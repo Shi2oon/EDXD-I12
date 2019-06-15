@@ -12,11 +12,11 @@ for i=1:NumberPo
     for ii=1:NumberPo
         if (PF(i,1)==PE(ii,1) || abs(PF(i,1)-PE(ii,1))==1 ||  abs(PF(i,1)-PE(ii,1))==2) ...
             && (PF(i,2)==PE(ii,2) || abs(PF(i,2)-PE(ii,2))==1 ||  abs(PF(i,2)-PE(ii,2))==2) 
-            truthness=0;
+            truthness = 0;
             for iii=1:length(Points(:,1))
                 if Points(iii,1)==round((PF(i,1)+PE(ii,1))/2) && ...
                         Points(iii,2)==round((PF(i,2)+PE(ii,2))/2)
-                    truthness=1;%do nothing, already indexed
+                    truthness = 1;  %do nothing, already indexed
                 end
             end
             if truthness==0

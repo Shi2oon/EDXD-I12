@@ -16,12 +16,6 @@ dir.scan   = 'X:\EE 13579 Diamond Light Source\EDXD\1. EDXD rawdata'; %raw data 
 dir.result = 'X:\EE 13579 Diamond Light Source\Diamond EE 13579\Strain Analysis 7'; %result directory
 mkdir(dir.result);
 
-%% Peak fitting parameters
-Q.PeakPositionS = [1 1 0; 2 0 0; 2 1 1]; % peaks planes h k l
-Q.PeakPosition  = [110, 200, 211]; %% put the peaks hkl coordinates
-Q.latticePar    = 2.866;             %lattice parameter, for Fe=2.856;
-[Q]             = Qsss(Q); %calculate values related to peaks and fittings tolearnce
-
 %% files to process
 % scan.scan    = [66842,66844,66845,66846,66850,66852,66853,66854,66855,66856,66857];  
 % scan.doc2    = 66842; 
@@ -35,6 +29,12 @@ scan.ref     = 'Theoretical'; %66888;  %unstrained scan(s), if not avilable then
 fk           = 23;       % number of detectors;
 scan.TH      = 3;        % fold of tolerance 1 to 5 of the mean along values in 1 point
 scan.CalibsC = [1,length(scan.Calib)]; % this is useful if you're using a range of calibration scans
+
+%% Peak fitting parameters
+Q.PeakPositionS = [1 1 0; 2 0 0; 2 1 1]; % peaks planes h k l
+Q.PeakPosition  = [110, 200, 211]; %% put the peaks hkl coordinates
+Q.latticePar    = 2.866;             %lattice parameter, for Fe=2.856;
+[Q]             = Qsss(Q); %calculate values related to peaks and fittings tolearnce
 
 %% calculate Calibration Factor and reference
  tic; [scan_numbers,AllScans,dir,doc2,~] = DiffSpect(scan,Q,dir,fk);

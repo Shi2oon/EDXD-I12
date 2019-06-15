@@ -89,17 +89,14 @@ Miniall=min(Miniall); Maxiall=max(Maxiall);
 
 count=0;
 for doc1=scan_numbers
-    
-count=count+1;
+    count=count+1;
     eval(sprintf('X=X%d;Y=Y%d;fwhmean=fwhmean%d;', doc1, doc1, doc1));
-    
-imagesc (X,Y,fwhmean);
-title(['FWHM ',num2str(doc1)]);xlabel('x(mm)');ylabel('y(mm)'); 
-c = colorbar; c.Label.String = 'FWHM Value (A^{-1})';%labelling
-caxis([Miniall Maxiall]); %labelling
-colormap(jet(256));
-pyxe_D_path = fullfile(results_dir,[num2str(doc1),' FWHM.png']);
-saveas(gcf,pyxe_D_path)
+    imagesc (X,Y,fwhmean);
+    title(['FWHM ',num2str(doc1)]);     xlabel('x(mm)');     ylabel('y(mm)'); 
+    c = colorbar;           c.Label.String = 'FWHM Value (A^{-1})';%labelling
+    caxis([Miniall Maxiall]);           colormap(jet(256));
+    pyxe_D_path = fullfile(results_dir,[num2str(doc1),' FWHM.png']);
+    saveas(gcf,pyxe_D_path)
 end
 
 
