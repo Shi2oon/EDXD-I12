@@ -10,8 +10,8 @@ fwhmean     =   RefScan.fwhmmean;
 NumberPo  = round(numel(fwhmean)*0.05);    % calculating numbar of random porints
 [Points] = find2ndPoints(NumberPo,fwhmean,Eyy);
 
-while length(Points(:,1)) <= 5 && NumberPo <= numel(fwhmean)
-    NumberPo = NumberPo+5;
+while length(Points(:,1)) <= 3 && NumberPo < numel(fwhmean)
+    NumberPo = NumberPo+length(Points(:,1));
     [Points] = find2ndPoints(NumberPo,fwhmean,Eyy);
 end
 
@@ -25,7 +25,7 @@ set(gcf,'position',[500,100,1050,700]);
 title(['Ref. Scan E_y_y with ' num2str(length(Points(:,1))) ...
     ' selcted Normalisation points (starred)'])
 xlabel('stage x-position (mm)');        ylabel('stage y-position (mm)')
-c = colorbar;                           c.Label.String = 'Strain (%)';%labelling
+c = colorbar;                           c.Label.String = 'Strain';%labelling
 for i=1:length(Points(:,1)) % find location for small points
     hold on; 
     plot(X(Points(i,2)),Y(Points(i,1)),'kp', 'MarkerSize', 15,'MarkerFaceColor','w');

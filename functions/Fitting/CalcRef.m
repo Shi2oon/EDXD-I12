@@ -22,7 +22,7 @@ elseif RefScan=='Theoretical'
     RefScan   = 999; % arbitrary name
     for peak=1:Q.NumberOfPeaks
         for k=1:fk
-            eval(sprintf('aa.Ref.b%d(k) = Q.theory(peak);',peak));
+            eval(sprintf('aa.Ref.b%d(k)     = Q.theory(peak);',peak));
             eval(sprintf('aa.a%d.Dmean(2,k) = Q.theory(peak);',peak));
         end
     end

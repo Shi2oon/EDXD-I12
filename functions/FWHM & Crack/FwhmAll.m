@@ -76,9 +76,10 @@ counter=counter+1;
     eval(sprintf('X=X%d;Y=Y%d;fwhmean=fwhmean%d;', doc1, doc1, doc1));
     
 imagesc (X,Y,fwhmean); hold on;
-set(gca,'YDir','normal'); set(gcf,'position',[900,100,1000,750])
-title(['FWHM ',num2str(doc1)]);xlabel('x(mm)');ylabel('y(mm)');
-% set(gca,'YDir','normal');
+set(gca,'YDir','normal'); 
+set(gcf,'position',[900,100,1000,750])
+title(['FWHM ',num2str(doc1)]);
+xlabel('x(mm)');ylabel('y(mm)');
 c = colorbar; c.Label.String = 'FWHM Value (A^{-1})';%labelling
 colormap(jet(256));         caxis([Miniall Maxiall]); %labelling
 plot(TCr(counter,2),TCr(counter,3),'kp', 'MarkerSize', 15,'MarkerFaceColor','k');

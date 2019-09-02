@@ -7,6 +7,7 @@ eval(sprintf('errorbar(1:fk,aa.a%d.Dmean(count,:),aa.a%d.err(count,:),"k--o","Ma
     title(['Peak \{' num2str(aa.Qposition(Q.NumberOfPeaks-peak+1)) '\} ']);
     ylabel('Intensity'); xlim([1 fk])
         set(gcf,'position',[2000,100,1000,750])
+  if peak ~= Q.NumberOfPeaks;         set(gca,'xtick',[]);  end
 end
 xlabel('Detectors'); 
 dir.path = fullfile(dir.specific{count},[num2str(doc1) ...
@@ -25,8 +26,10 @@ eval(sprintf('errorbar(1:fk,aa.a%d.DmeanRaw(count,:),aa.a%d.err(count,:),"b--<",
         ,peak,peak));
     hold off
     legend ('Normalised','Raw');
+    if peak ~= Q.NumberOfPeaks;         set(gca,'xtick',[]);  end
 end
 xlabel('Detectors');
 dir.path = fullfile(dir.specific{count},[num2str(doc1) ...
             ' Raw + Calib Mean Intensity.fig']);
         saveas(gcf,dir.path); close all 
+        

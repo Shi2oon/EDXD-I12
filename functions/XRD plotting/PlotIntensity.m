@@ -18,7 +18,7 @@ IntensityPlot=griddata(xLin,yLin,squeeze(trimmean(trimmean(Data(:,1:fk,:,:),50,4
             title(['XRDs ' num2str(doc1)]);
             set(gca,'YDir','normal')
             set(gcf,'position',[2000,400,750,550])
-            ylabel('Detectors'); xlabel('q (A^{-1})');
+            ylabel('Detectors'); xlabel(['q (' char(197) '^{-1})']);
             colormap(jet(256)); caxis([0 real(log10(max(max(max(max(Data))))))]);
             c = colorbar; c.Label.String = 'log_1_0(Intensity)';%labelling
             
@@ -28,6 +28,6 @@ IntensityPlot=griddata(xLin,yLin,squeeze(trimmean(trimmean(Data(:,1:fk,:,:),50,4
   %% optional if you want the data along a line
 %  [lineData,yplot,xplot]=LineData(xLin,yLin,IntensityPlot);  
 % plot(lineData)
-%  ylabel('Intensity'); xlabel('q (A^{-1})');
+%  ylabel('Intensity'); xlabel(['q (' char(197) '^{-1})']);;
             
 close all;

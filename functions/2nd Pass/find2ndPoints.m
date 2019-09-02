@@ -1,7 +1,8 @@
 function [Points] = find2ndPoints(NumberPo,fwhmean,Eyy)
 selectedF = sort(fwhmean(:));              % sort the fwhm 
 selectedE = sort(Eyy(:));  
-for i=1:NumberPo % find location for small points
+for i=1:NumberPo % find location for point with small elastic (strain) and
+    % plastic (fwhm) deformaiton
     [PF(i,1),PF(i,2)]=ind2sub(size(fwhmean),find(fwhmean==selectedF(i)));
     [PE(i,1),PE(i,2)]=ind2sub(size(Eyy),find(Eyy==selectedE(i)));
 end

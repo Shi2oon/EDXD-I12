@@ -22,28 +22,33 @@ end
 Phkl  = sort(Q.PeakPosition(:),'descend');
 TPP   = sort(Q.q_guess(:),'descend');
 PhklS = sort(Q.PeakPositionS,'descend');
-fprintf('\n\nPeak (hkl)    Theoretcial q   Optimised q     Calculated a0     tol (per)\n');
+% fprintf('\n\nPeak (hkl)\tTheoretcial q\tOptimised q\tCalculated a0\ttol (per)\n');
+fprintf('\n\nPeak (hkl)\tTheoretcial q\tOptimised q\tDiv.(±)\n');
 
 for peak=1:Q.NumberOfPeaks
     eval(sprintf('[A.A%d.b1]  = checkreplace(A.A%d.b1,scan.TH);',peak,peak));
     eval(sprintf('Ref.b%d     = trimmean(A.A%d.b1,50,2);',peak,peak));         %Reference 
     eval(sprintf('Meanb(peak) = trimmean(trimmean(A.A%d.b1,50,2),50);',peak)); %Reference
-    eval(sprintf('tol(peak)   = 100*trimmean(std(A.A%d.b1,0,2),50)/Meanb(peak);',peak));
+    eval(sprintf('tol(peak)   = trimmean(std(A.A%d.b1,0,2),50)/length(std(A.A%d.b1,0,2));'...
+        ,peak,peak));
     
     Q.h  = PhklS(peak,1); 
     Q.k  = PhklS(peak,2); 
     Q.l  = PhklS(peak,3);
     % %from Bragg's law & the lattice spacing (d)=2*pi/q
-    C_latticePar(peak)= 2*pi*sqrt(Q.h^2+Q.k^2+Q.l^2)/Meanb(peak);
+    %C_latticePar(peak)= 2*pi*sqrt(Q.h^2+Q.k^2+Q.l^2)/Meanb(peak);
     
-fprintf('\n    %d          %.4f         %.4f          %.4f           %.4f\n',...
-    Phkl(peak),TPP(peak),Meanb(peak),C_latticePar(peak),tol(peak)); 
+% fprintf('\n    %d          %.4f         %.4f          %.4f           %e\n',...
+%     Phkl(peak),TPP(peak),Meanb(peak),tol(peak)); 
+fprintf('\n\t    {%d}\t\t%.5f\t\t%.5f\t\t%.1e\t\n',...
+    Phkl(peak),TPP(peak),Meanb(peak),tol(peak)); 
 end 
 fprintf('\n');
 
-Table = table(Phkl(:),TPP(:),Meanb(:),C_latticePar(:),tol(:),'VariableNames',...
-    {'Peak_hkl', 'Theoretcial_Peak_Position', 'Optimised_Peak_Position',...
-    'Calculated_lattice_Parameter', 'Tolerance_per'});
+%Table = table(Phkl(:),TPP(:),Meanb(:),C_latticePar(:),tol(:),'VariableNames',...
+Table = table(Phkl(:),TPP(:),Meanb(:),tol(:),'VariableNames',...
+    {'Peak_hkl', 'Theoretcial_Peak_Position', 'Optimised_Peak_Position','PlusMinus'}); % 
+    %'Calculated_lattice_Parameter', 'Plus_or_Minus'}); % 
 path = fullfile(dir.results,[num2str(scan.doc2) ' 2nd Scan Parameters.xlsx']);
 writetable(Table, path);
 

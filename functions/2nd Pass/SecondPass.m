@@ -1,7 +1,7 @@
 function [scan_numbers,AllScans,dir,T] = SecondPass(scan,Q,dir,Points,fk)
 
 if Points(1,1) ~= [0 0] % no points were found
-    clc;            credits;        
+    clc;         
     fprintf('2nd pass for Theoretical results optimizations\n');
     
     % clibartion
