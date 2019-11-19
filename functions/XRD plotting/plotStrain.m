@@ -17,7 +17,7 @@ if doc1~=scan.ref
        plot(f,'--r');hold off 
        
 % Get current axes object (just plotted on) and its position
-ylabel('Strain,\epsilon^{hkl}_\Theta')
+ylabel('Strain,\epsilon^{hkl}_\downarrow')
 title ('Map-Averaged Microstrain and Detectors');
 ax1 = gca;  axPos = ax1.Position;
 % Change the position of ax1 to make room for extra axes
@@ -31,7 +31,7 @@ ax2 = axes('position', (axPos .* [1 1 1 1e-3]) + [0 0.08 0 0], 'color', 'none', 
 ax2.XLim = [0 180];     ax1.XLim = [1 23];
 % You can label the axes using XLabel.String
 ax1.XLabel.String = 'Detector Element number';
-ax2.XLabel.String = 'Azimuth, \Theta (Degrees)'; 
+ax2.XLabel.String = 'Azimuth, \downarrow (Degrees)'; 
 dir.path = fullfile(dir.specific{count},[num2str(doc1) ' Strain.fig']);
 saveas(gcf,dir.path);   close all
 end
@@ -55,9 +55,9 @@ end
 %             'MarkerEdgeColor','k','MarkerFaceColor','k')
 %         f=fit(degressD{xi}',trimmean(trimmean(A.Q,50,3),50,2),'fourier1'); 
 %         plot(f,'--r');hold off 
-%         ylabel('Microstrain,\epsilon^{hkl}_\Theta')
+%         ylabel('Microstrain,\epsilon^{hkl}_\downarrow')
 %         if xi==1; xlabel('Detector Element number');
-%         else; xlabel('Azimuth, \Theta (Degrees)'); end
+%         else; xlabel('Azimuth, \downarrow (Degrees)'); end
 %         xlim([min(degressD{xi}) max(degressD{xi})]);
 %         title ('Map-averaged Microstrain and Detectors'); 
 %         dir.path = fullfile(dir.specific{count},[num2str(doc1) '  '...

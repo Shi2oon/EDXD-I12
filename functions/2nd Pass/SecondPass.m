@@ -9,7 +9,7 @@ if Points(1,1) ~= [0 0] % no points were found
     T(1)    = toc; 
     % calculate the reference scan
     tic;    [aa.Ref,AllScans.CacledRef] = ref2nd(dir,Points,Q,aa.Factor,scan);
-    T(2)    = toc;           
+    T(2)    = toc;    AllScans.Points = Points;      
 
     fprintf('All calibration and Reference scans are done in %.1f seconds\n\n',...
     sum(T));     fprintf('Starts main body\n');

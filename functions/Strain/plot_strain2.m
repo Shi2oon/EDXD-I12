@@ -16,6 +16,7 @@ warning off
       [0 0 0],'Parent',axesFE);
 
 set(gcf,'position',[500,100,1050,700]); caxis([cmin cmax])
+  axis image;  colormap(jet(256));
 title([title_string ' map for scan ' num2str(doc1) operation])
 xlabel('stage x-position (mm)');    ylabel('stage y-position (mm)')
 c = colorbar;                       c.Label.String = 'Strain';%labelling
